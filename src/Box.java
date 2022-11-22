@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
-public class Box {
+public class Box extends Item {
     private int boxNo;
 
-    private final ArrayList<SimpleItem> items;
 
     public Box(int count, int boxNo) {
         this.boxNo = boxNo;
@@ -18,30 +17,36 @@ public class Box {
         this.boxNo = boxNo;
     }
 
-    public ArrayList<SimpleItem> getItems() {
-        return items;
-    }
 
     public void addItem(SimpleItem item) {
         items.add(item);
     }
 
     public void addItem(Box box) {
-        items.addAll(box.getItems());
+        items.add(box);
     }
 
     public int findBoxNo(String itemName) {
-        for (SimpleItem item : items) {
-            if (item.getItemName().toLowerCase().equals(itemName.toLowerCase())) {
+        for (Item item : items) {
+            int boxNo = -1;
+            if (item instanceof Box) {
+                boxNo = item.findBoxNo(itemName);
+            } else if (item instanceof SimpleItem) {
+                if (item.getItem().toLowerCase().equals(itemName.toLowerCase())) {
+                    boxNo = getBoxNo();
+                }
+            }
+            if (boxNo > -1) {
                 return getBoxNo();
             }
+
         }
         return -1;
     }
 
     public void print() {
-        for (SimpleItem item : items) {
-            System.out.println(item.getItemName());
+        for (Item item : items) {
+            System.out.println(item);
         }
     }
 }

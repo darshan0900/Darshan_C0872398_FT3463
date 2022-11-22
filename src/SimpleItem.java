@@ -1,12 +1,7 @@
-public class SimpleItem {
-    private final String itemName;
+public class SimpleItem extends Item {
 
     public SimpleItem(String itemName) {
         this.itemName = itemName;
-    }
-
-    public String getItemName() {
-        return itemName;
     }
 
 }
