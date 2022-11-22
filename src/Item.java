@@ -29,7 +29,12 @@ abstract public class Item {
         }
     }
 
-    int findBoxNo(String itemName){
+    int findBoxNo(String itemName) {
+        if (this.itemName != null) {
+            return this.itemName.toLowerCase().equals(itemName.toLowerCase()) ? 0 : -1;
+        }
         return -1;
-    };
+    }
+
+    ;
 }

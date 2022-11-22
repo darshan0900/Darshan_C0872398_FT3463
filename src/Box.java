@@ -28,14 +28,7 @@ public class Box extends Item {
 
     public int findBoxNo(String itemName) {
         for (Item item : items) {
-            int boxNo = -1;
-            if (item instanceof Box) {
-                boxNo = item.findBoxNo(itemName);
-            } else if (item instanceof SimpleItem) {
-                if (item.getItem().toLowerCase().equals(itemName.toLowerCase())) {
-                    boxNo = getBoxNo();
-                }
-            }
+            int boxNo = item.findBoxNo(itemName);
             if (boxNo > -1) {
                 return getBoxNo();
             }
