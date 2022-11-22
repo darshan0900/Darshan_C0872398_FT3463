@@ -13,6 +13,13 @@ class ArithmeticOperation {
 //                        new Number(3)
 //                )
 //        );
+//        ArithmeticExp expression = new Sum(
+//                new Number(2),
+//                new Product(
+//                        new Modulo(new Number(7), new Number(2)),
+//                        new Number(3)
+//                )
+//        );
         ArithmeticExp expression = new Sum(
                 new Number(3),
                 new Product(new Number(2), new Number(5))
